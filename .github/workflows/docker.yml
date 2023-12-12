@@ -45,7 +45,9 @@ jobs:
             type=raw,value=${{ steps.release-meta.outputs.version }}
             type=raw,value=${{ steps.release-meta.outputs.major_version }}
             type=raw,value=${{ steps.release-meta.outputs.version }}-${{ steps.release-meta.outputs.commit_short }}
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY }}/dumbmoron/cobalt
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
